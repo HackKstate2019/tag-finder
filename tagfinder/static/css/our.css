@@ -24,8 +24,12 @@ body{
   font-size: 20px;
 }
 
+.related_container{
+  margin-right: 5%;
+}
+
 .related_container p{
-  width: 45%;
+  width: 40%;
   float: left;
   height: 400px;
   text-align: left;
