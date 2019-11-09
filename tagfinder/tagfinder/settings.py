@@ -55,7 +55,7 @@ ROOT_URLCONF = 'tagfinder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')], #Directs Django to the global templates folder.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
