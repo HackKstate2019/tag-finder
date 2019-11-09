@@ -24,6 +24,11 @@ body{
   font-size: 20px;
 }
 
+.main h4{
+  width: 75%;
+  text-align: left;
+}
+
 .related_container{
   margin-right: 5%;
 }
