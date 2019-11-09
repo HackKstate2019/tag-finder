@@ -1,3 +1,16 @@
 django
 djongo
 dnspython
+lxml
+requests
+matplotlib
+nltk
+
+in env's cmd in python
+--> import nltk -->
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    nltk.download('maxent_ne_chunker')
+    nltk.download('vader_lexicon')
+    nltk.download('wordnet')

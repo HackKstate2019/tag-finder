@@ -1,0 +1,5 @@
+[('https://www.yahoo.com/gma/witness-said-saw-suspect-force-aniah-blanchard-missing-070955339--abc-news-topstories.html',
+ 'Witness said he saw suspect force Aniah Blanchard, missing stepdaughter of UFC fighter, into car against her will: Affidavit'), 
+ ('Blanchard', 5), ('Yazeed', 4), ('Harris', 3), ('time', 3), ('Alabama', 2), ('man', 2), ('affidavit', 2), 
+ ('Friday', 2), ('evidence', 2), ('vehicle', 2), ('witness', 1), ('stepdaughter', 1), ('car', 1), ('Auburn', 1), 
+ ('Montgomery', 1), ('Police', 1), ('ABC', 1), ('injury', 1), ('Wednesday', 1), ('Fuller', 1), ('Elijah', 1), ('world', 1)]

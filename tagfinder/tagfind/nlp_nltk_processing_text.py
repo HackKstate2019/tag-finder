@@ -11,12 +11,12 @@ def tags(url):
     from urllib import request
     from nltk.corpus import stopwords
     # Corpus Libraries Needed run once then comment out
-    # nltk.download('averaged_perceptron_tagger')
-    # nltk.download('punkt')
-    # nltk.download('stopwords')
-    # nltk.download('maxent_ne_chunker')
-    # nltk.download('vader_lexicon')
-    # nltk.download('wordnet')
+    #nltk.download('averaged_perceptron_tagger')
+    #nltk.download('punkt')
+    #nltk.download('stopwords')
+    #nltk.download('maxent_ne_chunker')
+    #nltk.download('vader_lexicon')
+    #nltk.download('wordnet')
 
     # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
 
@@ -29,7 +29,7 @@ def tags(url):
     # tokenize words
     tokens = word_tokenize(" ".join(text))
     type(tokens)
-    tokenized_length = len(tokens)
+    #tokenized_length = len(tokens)
     # lets remove stop=words
     # note: converting to string detokenizes the tokens, must retokenize
     sites = ["fox", "cnn", "msnbc", "news", "yahoo", "usa today", "new york times", "us weekly", "people", "share",
@@ -60,17 +60,18 @@ def tags(url):
                 freq[i] = freq[i + 1]
                 freq[i + 1] = temp
     tags = [tuple((url, title))]
-    value = freq[0][1]
-    x = 0
-    for i in range(5):
-        same = True
-        while same:
-            tags.append(tuple((freq[x][0], 5 - i)))
-            if value != freq[x + 1][1]:
-                value = freq[x + 1][1]
-                same = False
-            x = x + 1
-    print(tags)
+    if len(freq)>0:
+        value = freq[0][1]
+        x = 0
+        for i in range(5):
+            same = True
+            while same:
+                tags.append(tuple((freq[x][0], 5 - i)))
+                if value != freq[x + 1][1]:
+                    value = freq[x + 1][1]
+                    same = False
+                x = x + 1
+        return(tags)
 
 
-tags(input())
+#tags(input())
