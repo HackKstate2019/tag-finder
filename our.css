@@ -1,0 +1,25 @@
+body{
+  font-family: Georgia;
+}
+
+.header{
+  font-size: 36px;
+  text-align: center;
+}
+
+.main{
+  float: left;
+  width: 45%;
+  height: 400px;
+  margin-right: 5%;
+}
+
+.related_container{
+  width: 45%;
+  float: left;
+  height: 400px;
+}
+
+.related{
+  height: 33%;
+}
