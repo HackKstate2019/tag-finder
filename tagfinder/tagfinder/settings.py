@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tagfind.apps.TagfindConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +76,9 @@ WSGI_APPLICATION = 'tagfinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'tagfinder', #Old text --> os.path.join(BASE_DIR, 'db.sqlite3'
+        'HOST': 'mongodb+srv://admin:admin@tagfinder-ftti0.mongodb.net/test?retryWrites=true&w=majority', 
     }
 }
 
