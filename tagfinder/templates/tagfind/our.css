@@ -1,0 +1,43 @@
+body{
+  font-family: Georgia;
+  background-color: #EEE2DC;
+}
+
+.header{
+  font-size: 36px;
+  text-align: center;
+  background-color: #EEE2DC;
+  color: #AC3B61;
+}
+
+.main{
+  float: left;
+  width: 45%;
+  height: 400px;
+  margin-right: 5%;
+  background-color: #EEE2DC;
+  color: #123C69;
+}
+
+.main form,p{
+  text-align: center;
+  font-size: 20px;
+}
+
+.related_container p{
+  width: 45%;
+  float: left;
+  height: 400px;
+  text-align: left;
+  font-size: 20px;
+  background-color: #EEE2DC;
+  color: #123C69;
+}
+
+.related{
+  height: 33%;
+}
+
+.related h2{
+  font-size: 26px;
+}

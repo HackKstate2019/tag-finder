@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block title%}Home{%endblock%}
+
+{%block content%}
+    <header class = "header">
+    <h1>Tag Finder</h1>
+    </header>
+    <div class = "main">
+      <p>Search another Article</p>
+      <form action = "" method = "POST">
+        <input type = "text" placeholder = "Insert url here" id = "link" required></input>
+        <input type = "submit" value = "Search">
+      </form>
+    </div>
+    <div class = "related_container">
+      <div class = "related" id = "1">
+        <h2>titlevar</h2>
+        <a href = "placeholder link">placeholderlink</a>
+      </div>
+      <div class = "related" id = "2">
+        <h2>titlevar</h2>
+        <a href = "placeholder link">placeholderlink</a>
+      </div>
+      <div class = "related" id = "3">
+        <h2>titlevar</h2>
+        <a href = "placeholder link">placeholderlink</a>
+      </div>
+    </div>
+{%endblock%}
