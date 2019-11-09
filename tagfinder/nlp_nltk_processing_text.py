@@ -1,5 +1,5 @@
-def tags():
-    #library setup NLTK Library
+def tags(url):
+    # library setup NLTK Library
     from lxml import html
     import re
     import requests
@@ -10,15 +10,15 @@ def tags():
     from nltk.probability import FreqDist
     from urllib import request
     from nltk.corpus import stopwords
-    #Corpus Libraries Needed run once then comment out
-    #nltk.download('averaged_perceptron_tagger')
-    #nltk.download('punkt')
-    #nltk.download('stopwords')
-    #nltk.download('maxent_ne_chunker')
-    #nltk.download('vader_lexicon')
-    #nltk.download('wordnet')
+    # Corpus Libraries Needed run once then comment out
+    # nltk.download('averaged_perceptron_tagger')
+    # nltk.download('punkt')
+    # nltk.download('stopwords')
+    # nltk.download('maxent_ne_chunker')
+    # nltk.download('vader_lexicon')
+    # nltk.download('wordnet')
 
-    url = input() # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
+    # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
 
     test = requests.get(url)
     tree = html.fromstring(test.content)
@@ -26,13 +26,14 @@ def tags():
     title = "".join(titlelist)
     text = tree.xpath('//p/text()')
 
-    #tokenize words
+    # tokenize words
     tokens = word_tokenize(" ".join(text))
     type(tokens)
     tokenized_length = len(tokens)
-    #lets remove stop=words
-    #note: converting to string detokenizes the tokens, must retokenize
-    sites = ["fox","cnn","msnbc","news","yahoo","usa today", "new york times","us weekly","people","share","usa", "today", "us"]
+    # lets remove stop=words
+    # note: converting to string detokenizes the tokens, must retokenize
+    sites = ["fox", "cnn", "msnbc", "news", "yahoo", "usa today", "new york times", "us weekly", "people", "share",
+             "usa", "today", "us"]
     stop_words = set(stopwords.words('english'))
     tokens_stop_words_removed = [w for w in tokens if not w in stop_words]
     tokens_stop_words_removed = []
@@ -40,7 +41,7 @@ def tags():
         if w not in stop_words and w.isalpha() and w.lower() not in sites:
             tokens_stop_words_removed.append(w)
     tokens_stop_words_removed = re.sub(r'[^a-zA-Z0-9_\s]+', '', str(tokens_stop_words_removed))
-    #retokenize after removing special chars
+    # retokenize after removing special chars
     tokens_stop_words_removed = word_tokenize(tokens_stop_words_removed)
     tokens_stop_words_removed2 = nltk.pos_tag(tokens_stop_words_removed)
     keyword = []
@@ -48,28 +49,28 @@ def tags():
         if (word[1] == 'NNP') or word[1] == 'NN':
             keyword.append(word[0])
 
-    freqDist = FreqDist(keyword)
-    print(freqDist)
     fd = nltk.FreqDist(keyword)
     freq = []
     for word2, frequency in fd.most_common():
-        freq.append(tuple((word2,frequency)))
+        freq.append(tuple((word2, frequency)))
     for x in range(len(freq)):
-       for i in range(x):
-                if freq[i][1]<freq[i+1][1]:
-                    temp = freq[i]
-                    freq[i] = freq[i+1]
-                    freq[i+1] = temp
-    tags = []
+        for i in range(x):
+            if freq[i][1] < freq[i + 1][1]:
+                temp = freq[i]
+                freq[i] = freq[i + 1]
+                freq[i + 1] = temp
+    tags = [tuple((url, title))]
     value = freq[0][1]
     x = 0
     for i in range(5):
         same = True
         while same:
-            tags.append(tuple((freq[x][0],5-i)))
-            if value != freq[x+1][1]:
-                value = freq[x+1][1]
+            tags.append(tuple((freq[x][0], 5 - i)))
+            if value != freq[x + 1][1]:
+                value = freq[x + 1][1]
                 same = False
-            x=x+1
-    return tags
+            x = x + 1
+    print(tags)
 
+
+tags(input())
