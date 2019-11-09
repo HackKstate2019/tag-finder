@@ -8,23 +8,24 @@
     </header>
     <div class = "main">
       <p>Search another Article</p>
-      <form action = "" method = "POST">
-        <input type = "text" placeholder = "Insert url here" id = "link" required></input>
-        <input type = "submit" value = "Search">
+      <form action ="landing.html/" method = "POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type = "submit" value = "Submit">
       </form>
     </div>
     <div class = "related_container">
       <div class = "related" id = "1">
-        <h2>titlevar</h2>
-        <a href = "placeholder link">placeholderlink</a>
+        <h2>{{titlevar1}}</h2>
+        <a href = "{{siteurl1}}">{{siteurl1}}</a>
       </div>
       <div class = "related" id = "2">
-        <h2>titlevar</h2>
-        <a href = "placeholder link">placeholderlink</a>
+        <h2>{{titlevar2}}</h2>
+        <a href = "{{siteurl2}}">{{siteurl2}}</a>
       </div>
       <div class = "related" id = "3">
-        <h2>titlevar</h2>
-        <a href = "placeholder link">placeholderlink</a>
+        <h2>{{titlevar3}}</h2>
+        <a href = "{{siteurl3}}">{{siteurl3}}</a>
       </div>
     </div>
 {%endblock%}

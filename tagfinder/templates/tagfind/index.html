@@ -8,9 +8,10 @@
     </header>
     <div class = "main">
       <p>Insert the url of the article you want to find more like</p>
-      <form action = "" method = "POST">
-        <input type = "text" placeholder = "Insert url here" id = "link" required></input>
-        <input type = "submit" value = "Search">
+      <form action ="landing.html/" method = "POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type = "submit" value = "Submit">
       </form>
     </div>
     <div class = "related_container">
