@@ -1,4 +1,4 @@
-def tags():
+def tags(url):
     #library setup NLTK Library
     from lxml import html
     import re
@@ -18,7 +18,7 @@ def tags():
     #nltk.download('vader_lexicon')
     #nltk.download('wordnet')
 
-    url = input() # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
+     # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
 
     test = requests.get(url)
     tree = html.fromstring(test.content)
@@ -48,8 +48,6 @@ def tags():
         if (word[1] == 'NNP') or word[1] == 'NN':
             keyword.append(word[0])
 
-    freqDist = FreqDist(keyword)
-    print(freqDist)
     fd = nltk.FreqDist(keyword)
     freq = []
     for word2, frequency in fd.most_common():
@@ -71,5 +69,6 @@ def tags():
                 value = freq[x+1][1]
                 same = False
             x=x+1
-    return tags
+    print( tags)
 
+tags(input())
