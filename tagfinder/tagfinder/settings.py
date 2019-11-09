@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'tagfinder', #Old text --> os.path.join(BASE_DIR, 'db.sqlite3'
-        'HOST': 'mongodb+srv://admin:admin@tagfinder-ftti0.mongodb.net/test?retryWrites=true&w=majority', 
+        'HOST': 'mongodb+srv://admin:adminpassword@tagfinder-xoyxt.mongodb.net/test?retryWrites=true&w=majority'
     }
 }
 
