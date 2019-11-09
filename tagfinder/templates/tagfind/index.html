@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="our.css" rel="stylesheet">
-    <meta charset= "utf-8">
-    <meta name= "viewport" content= "width=device-width, initial-scale=1.0">
-  </head>
-  <body>
+{%extends 'base.html'%}
+
+{%block title%}Home{%endblock%}
+
+{%block content%}
     <header class = "header">
     <h1>Tag Finder</h1>
     </header>
@@ -21,5 +18,4 @@
         <p>Tag Finder is an application that's used to find more news articles like the one you submit. This is possible due to a script that finds "keywords" based on the number of times it appears in an article. We only pay attention to nouns and proper nouns, and we cross reference it with a prepopulated database (made with other articles) and return articles with similar tags.</p>
       </div>
     </div>
-  </body>
-</html>
+{%endblock%}

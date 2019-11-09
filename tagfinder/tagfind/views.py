@@ -5,3 +5,6 @@ from .models import Website,Tag
 
 def index(request):
     return render(request,'tagfind/index.html')
+
+def find_tags(request):
+    

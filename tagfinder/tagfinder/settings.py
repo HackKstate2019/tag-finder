@@ -120,3 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [ #Tells it that the static folder is in the same DIR, BASE_DIR, and called 'static'
+    os.path.join(BASE_DIR, "static"),
+]
