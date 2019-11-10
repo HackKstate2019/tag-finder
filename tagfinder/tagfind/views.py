@@ -4,6 +4,7 @@ from .models import Website,Tag
 from .forms import UrlForm
 from .nlp_nltk_processing_text import tags
 from .compare import compare
+from .exists_model_parser import exists_model_parser
 
 # Create your views here.
 
@@ -20,7 +21,8 @@ def get_url(request):
 
         if form.is_valid(): #.cleaned_data puts the Form info into a dictionary
             t=tags(form.cleaned_data['url']) #url, title, tag&value
-            c=compare(t)
+            exists_model_parser(t) #Checks if Article is already in DB, if not then it makes a new Website and appends Tags to it.
+            c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
 
             titlevar1=c[0][1]
             siteurl1=c[0][0]
@@ -32,7 +34,11 @@ def get_url(request):
             searchedtitle=t[0][1]
             searchedurl=t[0][0]
             
-            return render(request, 'tagfind/landing.html', {'form':form,'titlevar1':titlevar1,'titlevar2':titlevar2,'titlevar3':titlevar3,'siteurl1':siteurl1,'siteurl2':siteurl2,'siteurl3':siteurl3,'searchedtitle':searchedtitle,'searchedurl':searchedurl})
+            return render(request, 'tagfind/landing.html', {'form':form,'titlevar1':titlevar1,
+                                    'titlevar2':titlevar2,'titlevar3':titlevar3,
+                                    'siteurl1':siteurl1,'siteurl2':siteurl2,
+                                    'siteurl3':siteurl3,'searchedtitle':searchedtitle,
+                                    'searchedurl':searchedurl})
 
     else: #If it's a GET method
         form = UrlForm() #Provides empty Form Class in the form of HTML (see index.html)
