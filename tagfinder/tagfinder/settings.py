@@ -79,9 +79,14 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'tagfinder', #Old text --> os.path.join(BASE_DIR, 'db.sqlite3'
         'HOST': 'mongodb+srv://admin:adminpassword@tagfinder-xoyxt.mongodb.net/test?retryWrites=true&w=majority',
+<<<<<<< HEAD
 	'USER':'admin',
 	'PASSWORD':'adminpassword'
 #	'AUTH_SOURCE': 'tagfinder-xoyxt.mongodb.net/test?retryWrites=true&w=majority'
+=======
+        'USER': 'admin',
+        'PASSWORD': 'adminpassword',
+>>>>>>> 93568b3d289d7a2ca2827922f43358ec359572a2
     }
 }
 
