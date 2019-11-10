@@ -13,7 +13,7 @@
         {{ form }}
         <input type = "submit" value = "Submit">
       </form>
-      <label><input type="checkbox" name="show" value="checked">Show Reference Rating</input></label><br>
+      <label><input type="checkbox" name="show" id = "check" value="checked">Show Reference Rating</input></label><br>
       <h4>{{searchedtitle}}</h4><br>
     </div>
     <div class = "related_container">
@@ -35,6 +35,10 @@
     </div>
     <script>
     "use strict"
-    
+    if (document.getElementById(check).checked == true){
+      document.getElementByClass(hide).style.visibility = visible;
+    } else {
+      document.getElementByClass(hide).style.visibility = hidden;
+    }
     </script>
 {%endblock%}
