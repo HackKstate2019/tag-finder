@@ -3,6 +3,7 @@ from .models import Website,Tag
 
 from .forms import UrlForm
 from .nlp_nltk_processing_text import tags
+from .compare import compare
 
 # Create your views here.
 
@@ -19,20 +20,14 @@ def get_url(request):
 
         if form.is_valid(): #.cleaned_data puts the Form info into a dictionary
             t=tags(form.cleaned_data['url']) #url, title, tag&value
+            c=compare(t)
 
-            # tags=[]
-            # for k in t:
-            #     if k==t[0]:
-            #         pass
-            #     tags.append(k[0])
-            #     tags.append(k[1])
-
-            titlevar1=form
-            siteurl1=form
-            titlevar2=form.cleaned_data['url']
-            siteurl2=form
-            titlevar3=t[0][0]
-            siteurl3=form
+            titlevar1=c[0][1]
+            siteurl1=c[0][0]
+            titlevar2=c[1][1]
+            siteurl2=c[1][0]
+            titlevar3=c[2][1]
+            siteurl3=c[2][0]
 
             searchedtitle=t[0][1]
             searchedurl=t[0][0]
