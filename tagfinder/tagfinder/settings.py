@@ -25,7 +25,7 @@ SECRET_KEY = '6^=xp23i*__9f(!7v017x3(*lu8e8+0pd12&+160+e5@gvn65z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.tagfinder.tech','157.245.10.177']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -79,14 +79,9 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'tagfinder', #Old text --> os.path.join(BASE_DIR, 'db.sqlite3'
         'HOST': 'mongodb+srv://admin:adminpassword@tagfinder-xoyxt.mongodb.net/test?retryWrites=true&w=majority',
-<<<<<<< HEAD
-	'USER':'admin',
-	'PASSWORD':'adminpassword'
+	    'USER': 'admin',
+	    'PASSWORD':'adminpassword',
 #	'AUTH_SOURCE': 'tagfinder-xoyxt.mongodb.net/test?retryWrites=true&w=majority'
-=======
-        'USER': 'admin',
-        'PASSWORD': 'adminpassword',
->>>>>>> 93568b3d289d7a2ca2827922f43358ec359572a2
     }
 }
 
