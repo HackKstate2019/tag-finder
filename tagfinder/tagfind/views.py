@@ -26,10 +26,13 @@ def get_url(request):
 
             titlevar1=c[0][1]
             siteurl1=c[0][0]
+            rr1=c[0][2]
             titlevar2=c[1][1]
             siteurl2=c[1][0]
+            rr2=c[1][2]
             titlevar3=c[2][1]
             siteurl3=c[2][0]
+            rr3=c[2][2]
 
             searchedtitle=t[0][1]
             searchedurl=t[0][0]
@@ -38,7 +41,7 @@ def get_url(request):
                                     'titlevar2':titlevar2,'titlevar3':titlevar3,
                                     'siteurl1':siteurl1,'siteurl2':siteurl2,
                                     'siteurl3':siteurl3,'searchedtitle':searchedtitle,
-                                    'searchedurl':searchedurl})
+                                    'searchedurl':searchedurl,'rr1':rr1,'rr2':rr2,'rr3':rr3})
 
     else: #If it's a GET method
         form = UrlForm() #Provides empty Form Class in the form of HTML (see index.html)
