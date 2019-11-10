@@ -43,6 +43,9 @@ body{
   background-color: #EEE2DC;
   color: #123C69;
 }
+.related_container .related a{
+  margin-left: 15px;
+}
 
 .related{
   height: 33%;
