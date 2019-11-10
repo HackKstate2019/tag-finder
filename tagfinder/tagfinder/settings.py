@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [ #Tells it that the static folder is in the same DIR, BASE_DIR, and called 'static'
     os.path.join(BASE_DIR, "static"),
 ]
+
+APPEND_SLASH=False #Important for the landing.html to be able to search and be able to come back to the same page. SLASHES ARE IMPORTANT!!
