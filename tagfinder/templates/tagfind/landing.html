@@ -13,7 +13,7 @@
         {{ form }}
         <input type = "submit" value = "Submit">
       </form>
-      <label><input type="checkbox" name="show" id = "myCheck" value="checked" onclick = "toggleVis()">Show Reference Rating</input></label><br>
+      <label><input type="checkbox" name="show" id = "myCheck" value="checked" onclick = "toggleVis()" onload = "clear()">Show Reference Rating</input></label><br>
       <h4>{{searchedtitle}}</h4><br>
     </div>
     <div class = "related_container">
@@ -35,15 +35,20 @@
     </div>
     <script>
     "use strict"
+    function clear(){
+      document.getElementById('myCheck').checked = false;
+    }
     function toggleVis(){
       if (document.getElementById('myCheck').checked == true){
-        document.getElementById('rr1').style.visibility = "visible";
-        document.getElementById('rr2').style.visibility = "visible";
-        document.getElementById('rr3').style.visibility = "visible";
+        //document.getElementById('rr1').style.visibility = "visible";
+        //document.getElementById('rr2').style.visibility = "visible";
+        //document.getElementById('rr3').style.visibility = "visible";
+        document.getElementsByClassName('hide').style.visibility = "visible";
       } else {
-        document.getElementById('rr1').style.visibility = "hidden";
-        document.getElementById('rr2').style.visibility = "hidden";
-        document.getElementById('rr3').style.visibility = "hidden";
+        //document.getElementById('rr1').style.visibility = "hidden";
+        //document.getElementById('rr2').style.visibility = "hidden";
+        //document.getElementById('rr3').style.visibility = "hidden";
+        document.getElementsByClassName('hide').style.visibility = "hidden";
       }
     }
     </script>
