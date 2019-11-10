@@ -56,7 +56,17 @@ body{
   height: 33%;
 }
 
-.hide{
+#rr1{
+  visibility: hidden;
+  font-size: 15px;
+}
+
+#rr2{
+  visibility: hidden;
+  font-size: 15px;
+}
+
+#rr3{
   visibility: hidden;
   font-size: 15px;
 }
