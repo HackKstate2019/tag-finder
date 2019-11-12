@@ -19,8 +19,6 @@ def tags(url):
         #nltk.download('vader_lexicon')
         #nltk.download('wordnet')
 
-        import time
-
         # "https://www.foxnews.com/politics/republicans-hunter-biden-ukraine-whisteleblower-impeachment-witness"
 
         test = requests.get(url)
@@ -28,8 +26,6 @@ def tags(url):
         titlelist = tree.xpath('//title/text()')
         title = "".join(titlelist)
         text = tree.xpath('//p/text()')
-
-        start = time.time()
 
         # tokenize words
         tokens = word_tokenize(" ".join(text))
@@ -76,8 +72,6 @@ def tags(url):
                         value = freq[x + 1][1]
                         same = False
                     x = x + 1
-            print('----------------------------------------------------------------------------------------------------')
-            print('------------------NLP\'s Time Elapsed: ', time.time()-start)
             return(tags)
     except IndexError:
         raise Exception(400)
