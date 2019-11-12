@@ -25,26 +25,28 @@ def get_url(request):
             exists_model_parser(t) #Checks if Article is already in DB, if not then it makes a new Website and appends Tags to it.
             c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
 
+            return render(request, 'tagfind/landing.html', {'form':form})
+
             # print_test(t) #Print Debugging
 
-            titlevar1=c[0][1]
-            siteurl1=c[0][0]
-            rr1=c[0][2]
-            titlevar2=c[1][1]
-            siteurl2=c[1][0]
-            rr2=c[1][2]
-            titlevar3=c[2][1]
-            siteurl3=c[2][0]
-            rr3=c[2][2]
+            # titlevar1=c[0][1]
+            # siteurl1=c[0][0]
+            # rr1=c[0][2]
+            # titlevar2=c[1][1]
+            # siteurl2=c[1][0]
+            # rr2=c[1][2]
+            # titlevar3=c[2][1]
+            # siteurl3=c[2][0]
+            # rr3=c[2][2]
 
-            searchedtitle=t[0][1]
-            searchedurl=t[0][0]
+            # searchedtitle=t[0][1]
+            # searchedurl=t[0][0]
             
-            return render(request, 'tagfind/landing.html', {'form':form,'titlevar1':titlevar1,
-                                    'titlevar2':titlevar2,'titlevar3':titlevar3,
-                                    'siteurl1':siteurl1,'siteurl2':siteurl2,
-                                    'siteurl3':siteurl3,'searchedtitle':searchedtitle,
-                                    'searchedurl':searchedurl,'rr1':rr1,'rr2':rr2,'rr3':rr3})
+            # return render(request, 'tagfind/landing.html', {'form':form,'titlevar1':titlevar1,
+            #                         'titlevar2':titlevar2,'titlevar3':titlevar3,
+            #                         'siteurl1':siteurl1,'siteurl2':siteurl2,
+            #                         'siteurl3':siteurl3,'searchedtitle':searchedtitle,
+            #                         'searchedurl':searchedurl,'rr1':rr1,'rr2':rr2,'rr3':rr3})
 
     else: #If it's a GET method
         form = UrlForm() #Provides empty Form Class in the form of HTML (see index.html)

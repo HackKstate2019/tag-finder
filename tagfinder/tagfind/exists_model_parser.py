@@ -1,7 +1,6 @@
 from .models import Website, Tag
 
 def exists_model_parser(t):
-    start=time.time()
     exists=False
 
     if Website.objects.filter(url=t[0][0]).exists(): #Checks if the Input Article's URL is already in the Database
