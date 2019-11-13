@@ -5,6 +5,7 @@ def compare(t):
     start = time.time()
     websDict=dict()
     webs=[]
+    test=[]
 
     itert=iter(t)
     next(itert)
@@ -21,6 +22,19 @@ def compare(t):
                 val=(x['value']) #Tag's Value
             rr=(val*tag[1])
 
+            url=Website.objects.filter(id=wid).values('url')
+            for x in url:
+                url=str((x['url'])) #Tag's Website URL
+
+            title=Website.objects.filter(id=wid).values('title')
+            for x in title:
+                title=str((x['title'])) #Tag's Article Title
+
+            for x in test: #Never runs the FOR loop
+                if url in x:
+                    x[2]+=rr
+                else: test.append(tuple((url,title,rr)))
+
             if wid in websDict: #Adds the Tag's value to the Website Dictionary
                 websDict[wid]+=rr
             else: websDict[wid]=rr
@@ -35,6 +49,10 @@ def compare(t):
     print('----------------------------------------------------------------------------------------------------')
     print('------------------Webs: ', webs)
     print('----------------------------------------------------------------------------------------------------')
+    print('------------------Test: ', test)
+    print('----------------------------------------------------------------------------------------------------')
+
+
 
     # for i in Website.objects.all():
     #     rr = 0
