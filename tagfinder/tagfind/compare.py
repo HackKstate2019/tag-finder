@@ -1,32 +1,37 @@
 from .models import Website, Tag
 import time
 
-# s = Tag.objects.filter(keyword=t[tag]).values('website') Returns Website's ID
-# s = Tag.objects.filter(keyword=t[tag]).values('value') Returns 
-# Website.objects.get(id=s.foreignkey)
-
 def compare(t):
     start = time.time()
+    websDict=dict()
     webs=[]
 
     itert=iter(t)
     next(itert)
     for tag in itert:
-        taggy=str(tag[0]).lower() #Lowercases the IA's tags
-        if Tag.objects.filter(keyword=taggy).exists():
+        lowtag=str(tag[0]).lower() #Lowercases the IA's tags
+        if Tag.objects.filter(keyword=lowtag).exists():
 
-            wid=Tag.objects.filter(keyword=taggy).values('website') #Have to use the for loops or we get a TypeError
+            wid=Tag.objects.filter(keyword=lowtag).values('website') #Have to use the for loops or we get a TypeError
             for x in wid:
-                wid=(x['website'])
+                wid=str((x['website'])) #Tag's Website ID
 
-            val=Tag.objects.filter(keyword=taggy).values('value')
+            val=Tag.objects.filter(keyword=lowtag).values('value')
             for x in val:
-                val=(x['value'])
+                val=(x['value']) #Tag's Value
+            rr=(val*tag[1])
 
-            webs.append(tuple((wid,val)))
+            if wid in websDict: #Adds the Tag's value to the Website Dictionary
+                websDict[wid]+=rr
+            else: websDict[wid]=rr
 
+    webs=list(tuple(([x,y] for x,y in websDict.items())))
+
+    print('Webs Test: ', webs[0][0])
     print('----------------------------------------------------------------------------------------------------')
     print('------------------Compare\'s Time Elapsed: ', time.time()-start)
+    print('----------------------------------------------------------------------------------------------------')
+    print('------------------WebsDict: ', websDict)
     print('----------------------------------------------------------------------------------------------------')
     print('------------------Webs: ', webs)
     print('----------------------------------------------------------------------------------------------------')
