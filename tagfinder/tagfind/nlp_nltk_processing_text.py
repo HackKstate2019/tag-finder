@@ -25,7 +25,12 @@ def tags(url):
         tree = html.fromstring(test.content)
         titlelist = tree.xpath('//title/text()')
         title = "".join(titlelist)
-        text = tree.xpath('//p/text()')
+        if url.find("cnn.com") == -1:
+            text = tree.xpath('//p/text()')
+        else:
+            text2 = tree.xpath('//div[@class="l-container"]')
+            for x in text2:
+                text = (x.xpath('//div/text()'))
 
         # tokenize words
         tokens = word_tokenize(" ".join(text))
