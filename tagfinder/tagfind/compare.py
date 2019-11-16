@@ -1,11 +1,13 @@
-from .models import Website, Tag
 import time
+
+from .models import Tag, Website
+
+#Maybe just pass throught the WID & RR and pull the URL & the Title on the other side?
 
 def compare(t):
     start = time.time()
     websDict=dict()
     webs=[]
-    test=[]
 
     itert=iter(t)
     next(itert)
@@ -30,27 +32,92 @@ def compare(t):
             for x in title:
                 title=str((x['title'])) #Tag's Article Title
 
-            for x in test: #Never runs the FOR loop
-                if url in x:
-                    x[2]+=rr
-                else: test.append(tuple((url,title,rr)))
+            # for x in test: #Never runs the FOR loop
+            #     if url in x:
+            #         # x[2]+=rr
+            #         print('testtttttt: ',x[2])
+            #     else: test.append(tuple((url,title,rr)))
+            
+            # if testcounter>0: #Testing for URL Matching with If-In
+            #     print(f'--------------------------------------------Test for Test. Counter = {testcounter}')
+            #     for x in test:
+            #         print('X in Test: ', x)
+            #         print('X[2] in Test: ', x[2])
+            #         print('X[0] in Test: ', x[0])
+            #         print('URL of Current Found Tag: ', url)
+            #         if x[0]==url:
+            #             lst=list(x)
+            #             lst[2]+=rr
+            #             print('::::::::::::: Current Found Tag URL == X[0] :::::::::::::')
+            #             x=tuple(lst)
+            #             print('X[2] + Current Tag\'s RR: ', x[2])
+            #         if url in x:
+            #             print('::::::::::::: Found Current Tag URL IN X :::::::::::::')
+            #         print('----------------------------------------------------------------------------------------------------')
+
+            # if testcounter>0: #Kind of worked, but not really. Never got the new tuple to replace the old one.
+            #     for x in test:
+            #         if x[0]==url:
+            #             lst=list(x)
+            #             lst[2]+=rr
+            #             x=tuple(lst)
+            #         else: 
+            #             test.append(tuple((url,title,rr)))
+            #             print(f'----------Current Tag isn\'t in Test. Appended.')
+            # else: 
+            #     test.append(tuple((url,title,rr)))
+            #     print(f'Adding the first instance to')
+
+            # for x in test:
+            #     print('{} : {}'.format(x[2])) #Prints content of test
 
             if wid in websDict: #Adds the Tag's value to the Website Dictionary
                 websDict[wid]+=rr
             else: websDict[wid]=rr
+    
+    def getKey(item):
+        return item[rr]
 
     webs=list(tuple(([x,y] for x,y in websDict.items())))
+    webs=sorted(webs, key=getKey, reverse=True)
+    top = []
+    test=[]
 
-    print('Webs Test: ', webs[0][0])
-    print('----------------------------------------------------------------------------------------------------')
-    print('------------------Compare\'s Time Elapsed: ', time.time()-start)
-    print('----------------------------------------------------------------------------------------------------')
-    print('------------------WebsDict: ', websDict)
-    print('----------------------------------------------------------------------------------------------------')
-    print('------------------Webs: ', webs)
-    print('----------------------------------------------------------------------------------------------------')
-    print('------------------Test: ', test)
-    print('----------------------------------------------------------------------------------------------------')
+    for i in range(3):
+        try:
+            top.append(webs[i])
+        except:
+            top.append(tuple(('','',)))
+
+    for x in top:
+        wid=int(x[0])
+        rr=str(x[1])
+        url=Website.objects.filter(id=wid).values('url')
+        for x in url:
+            url=str((x['url'])) #Tag's Website URL
+        title=Website.objects.filter(id=wid).values('title')
+        for x in title:
+            title=str((x['title'])) #Tag's Article Title
+        test.append(tuple((url,title,rr)))
+        # test.append(tuple(('','','')))
+
+
+    return test
+
+    
+
+
+
+    # print('Webs Test: ', webs[0][0])
+    # print('----------------------------------------------------------------------------------------------------')
+    # print('------------------Compare\'s Time Elapsed: ', time.time()-start)
+    # print('----------------------------------------------------------------------------------------------------')
+    # print('------------------WebsDict: ', websDict)
+    # print('----------------------------------------------------------------------------------------------------')
+    # print('------------------Webs: ', webs)
+    # print('----------------------------------------------------------------------------------------------------')
+    # print('------------------Test: ', test)
+    # print('----------------------------------------------------------------------------------------------------')
 
 
 
@@ -72,5 +139,7 @@ def compare(t):
 #         top.append(webs[i])
 #     return top
 
-# def getKey(item):
-#     return item[2]
+# 
+
+def pull(c):
+    print('C\'s Output: ',c)

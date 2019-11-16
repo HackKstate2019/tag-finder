@@ -6,6 +6,7 @@ from .nlp_nltk_processing_text import tags
 from .compare import compare
 from .exists_model_parser import exists_model_parser
 from .database_test import print_test
+from .compare import pull
 
 # Create your views here.
 
@@ -24,20 +25,32 @@ def get_url(request):
             t=tags(form.cleaned_data['url']) #url, title, tag&value
             exists_model_parser(t) #Checks if Article is already in DB, if not then it makes a new Website and appends Tags to it.
             c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
+            # p=pull(c)
+
+            print('Compare\'s Output: ', c)
+            print('Compare\'s [0]: ', c[0])
+            print('Compare\'s [0][0]: ', c[0][0])
+            print('Compare\'s Output Length: ', len(c))
 
             return render(request, 'tagfind/landing.html', {'form':form})
 
-            # print_test(t) #Print Debugging
-
-            # titlevar1=c[0][1]
-            # siteurl1=c[0][0]
-            # rr1=c[0][2]
-            # titlevar2=c[1][1]
-            # siteurl2=c[1][0]
-            # rr2=c[1][2]
-            # titlevar3=c[2][1]
-            # siteurl3=c[2][0]
-            # rr3=c[2][2]
+            # titlevar1=Website.objects.filter(id=int(c[0][0])).values('title')
+            # siteurl1=Website.objects.filter(id=int(c[0][0])).values('url')
+            # rr1=str(c[0][1])
+            # try:
+            #     titlevar2=Website.objects.filter(id=int(c[1][0])).values('title')
+            #     siteurl2=Website.objects.filter(id=int(c[1][0])).values('url')
+            #     rr2=str(c[1][1])
+            #     titlevar3=Website.objects.filter(id=int(c[2][0])).values('title')
+            #     siteurl3=Website.objects.filter(id=int(c[2][0])).values('url')
+            #     rr3=str(c[2][1])
+            # except:
+            #     titlevar2=''
+            #     siteurl2=''
+            #     rr2=''
+            #     titlevar3=''
+            #     siteurl3=''
+            #     rr3=''
 
             # searchedtitle=t[0][1]
             # searchedurl=t[0][0]
