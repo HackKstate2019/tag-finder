@@ -81,16 +81,19 @@ def compare(t):
     webs=list(tuple(([x,y] for x,y in websDict.items())))
     webs=sorted(webs, key=getKey, reverse=True)
     top = []
-    test=[]
+    test= []
 
     for i in range(3):
         try:
             top.append(webs[i])
         except:
-            top.append(tuple(('','',)))
+            top.append(tuple((0,0,0))) #Causing errors.
+
+    print('Webs: ', webs)
+    print('Top: ', top)
 
     for x in top:
-        wid=int(x[0])
+        wid=x[0]
         rr=str(x[1])
         url=Website.objects.filter(id=wid).values('url')
         for x in url:
