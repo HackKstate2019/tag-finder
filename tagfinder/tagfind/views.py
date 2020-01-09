@@ -6,7 +6,6 @@ from .nlp_nltk_processing_text import tags
 from .compare import compare
 from .exists_model_parser import exists_model_parser
 from .database_test import print_test
-from .compare import pull
 
 # Create your views here.
 
@@ -25,7 +24,6 @@ def get_url(request):
             t=tags(form.cleaned_data['url']) #url, title, tag&value
             exists_model_parser(t) #Checks if Article is already in DB, if not then it makes a new Website and appends Tags to it.
             c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
-            # p=pull(c)
 
             print('Compare\'s Output: ', c)
             print('Compare\'s [0]: ', c[0])
