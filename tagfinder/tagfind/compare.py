@@ -39,14 +39,17 @@ def compare(t):
     websorted = []
     top= []
 
-    #Need to make sure that IA is not in websorted.
-    print('T: ', t)
-
     for i in range(3):
         try:
             websorted.append(webs[i])
         except:
             websorted.append(tuple((0,0,0))) #Not 3 Websites, so we pass through a blank one.
+
+    #Need to make sure that IA is not in websorted.
+    print('T[0][0]: ', t[0][0]) #IA's URL
+    print('Websorted: ', websorted) #Website list of WID's and RR's, but sorted
+    test=Website.objects.filter(url=t[0][0]).values('id') #IA's WID
+    print('Test WID: ', test)
 
     for x in websorted: #Takes the websorted 3 websites and puts them into a final tuple.
         wid=x[0]
