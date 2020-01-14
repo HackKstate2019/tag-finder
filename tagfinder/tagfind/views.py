@@ -25,11 +25,6 @@ def get_url(request):
             exists_model_parser(t) #Checks if Article is already in DB, if not then it makes a new Website and appends Tags to it.
             c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
 
-            # print('Compare\'s Output: ', c)
-            # print('Compare\'s [0]: ', c[0])
-            # print('Compare\'s [0][0]: ', c[0][0])
-            # print('Compare\'s Output Length: ', len(c))
-
             #This is expecting the actual information to just be passed on.
             titlevar1=c[0][1]
             siteurl1=c[0][0]
