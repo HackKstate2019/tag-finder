@@ -1,7 +1,7 @@
 from .models import Tag, Website
 
 def compare(t):
-    websDict=dict()
+    websDict=dict() #Dictionary makes it easy to continually update websites' rr's.
     webs=[]
 
     itert=iter(t)
