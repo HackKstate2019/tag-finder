@@ -39,27 +39,38 @@ def compare(t):
     websorted = []
     top= []
 
-    for i in range(3):
-        try:
-            websorted.append(webs[i])
-        except:
-            websorted.append(tuple((0,0,0))) #Not 3 Websites, so we pass through a blank one.
+    for i in range(len(webs)):
+        websorted.append(webs[i]) #Converts dictionary to tuple, 'cos I feel like it.
 
-    #Need to make sure that IA is not in websorted.
-    print('T[0][0]: ', t[0][0]) #IA's URL
-    print('Websorted: ', websorted) #Website list of WID's and RR's, but sorted
-    test=Website.objects.filter(url=t[0][0]).values('id') #IA's WID
-    print('Test WID: ', test)
+    ia=Website.objects.filter(url=t[0][0]).values('id') #IA's WID
 
     for x in websorted: #Takes the websorted 3 websites and puts them into a final tuple.
         wid=x[0]
-        rr=str(x[1])
-        url=Website.objects.filter(id=wid).values('url')
+        for y in ia:
+            ia_id=str(y['id'])
+            if wid == ia_id: #X's WID = IA's WID
+                weblist=list(websorted) #Can't change tuples, have to make it a list.
+                weblist.remove(x) #Removes IA from Websorted.
+                websorted=tuple(weblist) #Reconverts to Tuple, just 'cos.
+            else:
+                wid=x[0]
+                rr=str(x[1])
+                url=Website.objects.filter(id=wid).values('url')
+                for x in url:
+                    url=str((x['url'])) #Tag's Website URL
+                title=Website.objects.filter(id=wid).values('title')
+                for x in title:
+                    title=str((x['title'])) #Tag's Article Title
+                top.append(tuple((url,title,rr))) #Adds recommended website to final tuple.
+
+    while len(top) < 3: #If there're less than 3 recommended websites then we add a pre-made blank one.
+        rr=''
+        url=Website.objects.filter(id=0).values('url')
         for x in url:
             url=str((x['url'])) #Tag's Website URL
-        title=Website.objects.filter(id=wid).values('title')
+        title=Website.objects.filter(id=0).values('title')
         for x in title:
             title=str((x['title'])) #Tag's Article Title
-        top.append(tuple((url,title,rr)))
+        top.append(tuple((url,title,rr))) #Adds blank website to final tuple.
 
     return top
