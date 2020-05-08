@@ -4,9 +4,11 @@ def exists_model_parser(t):
     exists=False
 
     if Website.objects.filter(url=t[0][0]).exists(): #Checks if the Input Article's URL is already in the Database
+        print('true baby')
         exists=True
     
     if exists==False:
+        print('false baby')
         w=Website(url=str(t[0][0]),title=str(t[0][1]))
         w.save()
         itert = iter(t) #This skips the first iteration of the for loop

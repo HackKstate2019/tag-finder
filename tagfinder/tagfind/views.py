@@ -26,6 +26,7 @@ def get_url(request):
             c=compare(t) #Compares Input Article to all of the Articles in the DB, forming Reference Ratings (RR) between each page.
 
             #This is expecting the actual information to just be passed on.
+            print(t)
             titlevar1=c[0][1]
             siteurl1=c[0][0]
             rr1=c[0][2]
